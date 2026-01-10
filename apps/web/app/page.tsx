@@ -33,18 +33,24 @@ export default function Home() {
               </p>
 
               <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-slide-up animate-delay-200">
-                <a href="#install" className="btn-primary">
+                <a 
+                  href="/daily-word-extension.zip" 
+                  download="daily-word-extension.zip"
+                  className="btn-primary"
+                >
                   <svg
                     className="w-5 h-5 mr-2"
-                    fill="currentColor"
+                    fill="none"
                     viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
                   >
-                    <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm0 2.5a9.5 9.5 0 110 19 9.5 9.5 0 010-19zm4.5 9.5l-6 4V8l6 4z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                   </svg>
-                  Install Extension
+                  Download Extension
                 </a>
-                <a href="#features" className="btn-secondary">
-                  Learn More
+                <a href="#install" className="btn-secondary">
+                  How to Install
                 </a>
               </div>
 
@@ -318,97 +324,163 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Chrome Web Store */}
-            <div className="card text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-green-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <svg
-                  className="w-8 h-8 text-white"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <circle cx="12" cy="12" r="10" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                Chrome Web Store
+          {/* Direct Download - Featured */}
+          <div className="card text-center mb-12 border-2 border-primary-200 bg-gradient-to-br from-primary-50 to-white">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary-100 rounded-full text-primary-700 text-xs font-semibold mb-4">
+              <span className="w-1.5 h-1.5 bg-primary-500 rounded-full animate-pulse" />
+              RECOMMENDED
+            </div>
+            <div className="w-20 h-20 bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+              <svg
+                className="w-10 h-10 text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+            </div>
+            <h3 className="text-2xl font-semibold text-gray-900 mb-2">
+              Direct Download
+            </h3>
+            <p className="text-gray-600 mb-6 max-w-md mx-auto">
+              Download the extension ZIP file directly and load it in Chrome.
+              No build tools required.
+            </p>
+            <a 
+              href="/daily-word-extension.zip" 
+              download="daily-word-extension.zip"
+              className="btn-primary inline-flex text-lg px-8 py-4"
+            >
+              <svg
+                className="w-5 h-5 mr-2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              Download ZIP (50 KB)
+            </a>
+            <p className="text-xs text-gray-400 mt-4">
+              Version 1.0.0 • Works on Chrome, Edge, Brave, and other Chromium browsers
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-8">
+            {/* Quick Install Steps */}
+            <div className="card">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                <span className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center text-white text-sm font-bold">
+                  1
+                </span>
+                Install from ZIP
               </h3>
               <p className="text-gray-600 mb-6">
-                The easiest way to install. One click and you&apos;re ready to
-                go.
+                After downloading the ZIP, follow these simple steps:
               </p>
-              <a
-                href="#"
-                className="btn-primary inline-flex opacity-50 cursor-not-allowed"
-                aria-disabled="true"
-              >
-                Coming Soon
-              </a>
+
+              <ol className="space-y-4">
+                <li className="flex gap-4">
+                  <span className="flex-shrink-0 w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center text-primary-700 font-semibold text-xs">
+                    1
+                  </span>
+                  <div>
+                    <p className="font-medium text-gray-900">
+                      Extract the ZIP file
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      Unzip to any folder on your computer
+                    </p>
+                  </div>
+                </li>
+                <li className="flex gap-4">
+                  <span className="flex-shrink-0 w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center text-primary-700 font-semibold text-xs">
+                    2
+                  </span>
+                  <div>
+                    <p className="font-medium text-gray-900">
+                      Open Chrome Extensions
+                    </p>
+                    <code className="text-sm bg-gray-100 px-2 py-1 rounded mt-1 inline-block text-gray-700">
+                      chrome://extensions
+                    </code>
+                  </div>
+                </li>
+                <li className="flex gap-4">
+                  <span className="flex-shrink-0 w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center text-primary-700 font-semibold text-xs">
+                    3
+                  </span>
+                  <div>
+                    <p className="font-medium text-gray-900">
+                      Enable Developer Mode
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      Toggle in the top-right corner
+                    </p>
+                  </div>
+                </li>
+                <li className="flex gap-4">
+                  <span className="flex-shrink-0 w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center text-primary-700 font-semibold text-xs">
+                    4
+                  </span>
+                  <div>
+                    <p className="font-medium text-gray-900">
+                      Click &quot;Load unpacked&quot;
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      Select the extracted folder
+                    </p>
+                  </div>
+                </li>
+              </ol>
             </div>
 
-            {/* Developer Mode */}
+            {/* For Developers */}
             <div className="card">
               <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 <span className="w-8 h-8 bg-gray-900 rounded-lg flex items-center justify-center text-white text-sm font-bold">
                   {'</>'}
                 </span>
-                Developer Mode (Manual Install)
+                Build from Source
               </h3>
               <p className="text-gray-600 mb-6">
-                Load the extension directly from source. Great for developers or
-                early access.
+                For developers who want to modify or contribute to the extension:
               </p>
 
               <ol className="space-y-4">
                 <li className="flex gap-4">
-                  <span className="flex-shrink-0 w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center text-primary-700 font-semibold text-sm">
+                  <span className="flex-shrink-0 w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 font-semibold text-xs">
                     1
                   </span>
                   <div>
-                    <p className="font-medium text-gray-900">
-                      Download or clone the repository
-                    </p>
+                    <p className="font-medium text-gray-900">Clone the repo</p>
                     <code className="text-sm bg-gray-100 px-2 py-1 rounded mt-1 block text-gray-700 overflow-x-auto">
-                      git clone https://github.com/your-repo/daily-word
+                      git clone https://github.com/draphael123/daily-word-extension.git
                     </code>
                   </div>
                 </li>
                 <li className="flex gap-4">
-                  <span className="flex-shrink-0 w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center text-primary-700 font-semibold text-sm">
+                  <span className="flex-shrink-0 w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 font-semibold text-xs">
                     2
                   </span>
                   <div>
-                    <p className="font-medium text-gray-900">
-                      Build the extension
-                    </p>
+                    <p className="font-medium text-gray-900">Install & build</p>
                     <code className="text-sm bg-gray-100 px-2 py-1 rounded mt-1 block text-gray-700 overflow-x-auto">
                       pnpm install && pnpm build:extension
                     </code>
                   </div>
                 </li>
                 <li className="flex gap-4">
-                  <span className="flex-shrink-0 w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center text-primary-700 font-semibold text-sm">
+                  <span className="flex-shrink-0 w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 font-semibold text-xs">
                     3
                   </span>
                   <div>
-                    <p className="font-medium text-gray-900">
-                      Open Chrome Extensions
-                    </p>
-                    <code className="text-sm bg-gray-100 px-2 py-1 rounded mt-1 block text-gray-700">
-                      chrome://extensions
-                    </code>
-                  </div>
-                </li>
-                <li className="flex gap-4">
-                  <span className="flex-shrink-0 w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center text-primary-700 font-semibold text-sm">
-                    4
-                  </span>
-                  <div>
-                    <p className="font-medium text-gray-900">
-                      Enable Developer Mode and click &quot;Load unpacked&quot;
-                    </p>
-                    <p className="text-sm text-gray-500 mt-1">
-                      Select the{' '}
+                    <p className="font-medium text-gray-900">Load in Chrome</p>
+                    <p className="text-sm text-gray-500">
+                      Load the{' '}
                       <code className="bg-gray-100 px-1 rounded">
                         apps/extension/dist
                       </code>{' '}
@@ -417,6 +489,18 @@ export default function Home() {
                   </div>
                 </li>
               </ol>
+
+              <a 
+                href="https://github.com/draphael123/daily-word-extension"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-primary-600 transition-colors"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+                </svg>
+                View on GitHub
+              </a>
             </div>
           </div>
         </div>
@@ -576,7 +660,9 @@ export default function Home() {
                 Install
               </a>
               <a
-                href="https://github.com"
+                href="https://github.com/draphael123/daily-word-extension"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hover:text-white transition-colors"
               >
                 GitHub
