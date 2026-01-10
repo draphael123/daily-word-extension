@@ -2,12 +2,19 @@ import type { StorageState } from '../types';
 import { DEFAULT_STORAGE_STATE } from '../types';
 
 /**
- * Get all stored state from chrome.storage.local
+ * Storage API wrapper - uses sync for cross-device sync
+ * Falls back to local if sync quota exceeded
  */
-export async function getStorageState(): Promise<Partial<StorageState>> {
+
+const storage = chrome.storage.sync;
+
+/**
+ * Get all stored state from chrome.storage.sync
+ */
+export async function getStorageState(): Promise<StorageState> {
   return new Promise((resolve) => {
-    chrome.storage.local.get(null, (result) => {
-      resolve(result as Partial<StorageState>);
+    storage.get(null, (result) => {
+      resolve({ ...DEFAULT_STORAGE_STATE, ...result } as StorageState);
     });
   });
 }
@@ -22,11 +29,11 @@ export async function getStorageKeys<K extends keyof StorageState>(
     const defaults: Partial<StorageState> = {};
     keys.forEach((key) => {
       if (key in DEFAULT_STORAGE_STATE) {
-        defaults[key] = DEFAULT_STORAGE_STATE[key] as StorageState[K];
+        defaults[key] = DEFAULT_STORAGE_STATE[key as keyof typeof DEFAULT_STORAGE_STATE] as StorageState[K];
       }
     });
 
-    chrome.storage.local.get(defaults, (result) => {
+    storage.get(defaults, (result) => {
       resolve(result as Pick<StorageState, K>);
     });
   });
@@ -38,8 +45,16 @@ export async function getStorageKeys<K extends keyof StorageState>(
 export async function setStorageState(
   updates: Partial<StorageState>
 ): Promise<void> {
-  return new Promise((resolve) => {
-    chrome.storage.local.set(updates, resolve);
+  return new Promise((resolve, reject) => {
+    storage.set(updates, () => {
+      if (chrome.runtime.lastError) {
+        // If sync storage fails (quota exceeded), fall back to local
+        console.warn('[Daily Word] Sync storage error, falling back to local:', chrome.runtime.lastError);
+        chrome.storage.local.set(updates, resolve);
+      } else {
+        resolve();
+      }
+    });
   });
 }
 
@@ -48,7 +63,21 @@ export async function setStorageState(
  */
 export async function clearStorage(): Promise<void> {
   return new Promise((resolve) => {
-    chrome.storage.local.clear(resolve);
+    storage.clear(() => {
+      chrome.storage.local.clear(resolve);
+    });
   });
 }
 
+/**
+ * Listen for storage changes
+ */
+export function onStorageChange(
+  callback: (changes: { [key: string]: chrome.storage.StorageChange }) => void
+): void {
+  chrome.storage.onChanged.addListener((changes, areaName) => {
+    if (areaName === 'sync' || areaName === 'local') {
+      callback(changes);
+    }
+  });
+}

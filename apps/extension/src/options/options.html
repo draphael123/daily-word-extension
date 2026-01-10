@@ -3,67 +3,222 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Daily Word - Options</title>
+  <title>Daily Word - Settings</title>
   <link rel="stylesheet" href="options.css">
 </head>
 <body>
-  <div class="container">
-    <header class="header">
-      <h1 class="title">Daily Word Options</h1>
+  <div class="options-container" id="app">
+    <header class="options-header">
+      <div class="logo">
+        <span class="logo-icon">📚</span>
+        <h1>Daily Word Settings</h1>
+      </div>
+      <button class="theme-toggle" id="themeToggle">
+        <span class="theme-icon">🌙</span>
+      </button>
     </header>
 
-    <main class="content">
-      <section class="section">
-        <h2 class="section-title">Statistics</h2>
+    <main class="options-main">
+      <!-- Stats Overview -->
+      <section class="settings-section">
+        <h2>📊 Your Stats</h2>
         <div class="stats-grid">
           <div class="stat-card">
-            <span class="stat-value" id="streak-value">0</span>
-            <span class="stat-label">Current Streak</span>
+            <span class="stat-icon">🔥</span>
+            <span class="stat-value" id="streak">0</span>
+            <span class="stat-label">Day Streak</span>
           </div>
           <div class="stat-card">
-            <span class="stat-value" id="words-seen">0</span>
-            <span class="stat-label">Words Seen</span>
+            <span class="stat-icon">⭐</span>
+            <span class="stat-value" id="points">0</span>
+            <span class="stat-label">Points</span>
           </div>
           <div class="stat-card">
-            <span class="stat-value" id="words-remaining">1000</span>
-            <span class="stat-label">Words Remaining</span>
+            <span class="stat-icon">📖</span>
+            <span class="stat-value" id="wordsLearned">0</span>
+            <span class="stat-label">Words Learned</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-icon">✅</span>
+            <span class="stat-value" id="wordsUsed">0</span>
+            <span class="stat-label">Words Used</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-icon">🏆</span>
+            <span class="stat-value" id="achievements">0</span>
+            <span class="stat-label">Achievements</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-icon">🔍</span>
+            <span class="stat-value" id="autoDetected">0</span>
+            <span class="stat-label">Auto-Detected</span>
           </div>
         </div>
       </section>
 
-      <section class="section">
-        <h2 class="section-title">Notifications</h2>
-        <label class="toggle-row">
-          <span class="toggle-label">Enable notifications</span>
-          <div class="toggle-switch">
-            <input type="checkbox" id="notifications-toggle" checked>
-            <span class="toggle-slider"></span>
-          </div>
-        </label>
-        <p class="toggle-description">
-          Get a notification when you mark a word as used.
-        </p>
+      <!-- Streak Calendar -->
+      <section class="settings-section">
+        <h2>📅 Streak Calendar</h2>
+        <div class="calendar-container" id="streakCalendar"></div>
       </section>
 
-      <section class="section">
-        <h2 class="section-title">Word List</h2>
-        <p class="section-description">
-          Reset the word list to start fresh with a new shuffled order.
-          This will not affect your streak.
-        </p>
-        <button class="reset-button" id="reset-button">
-          Reset & Reshuffle Words
-        </button>
-        <div class="reset-message" id="reset-message"></div>
+      <!-- Appearance -->
+      <section class="settings-section">
+        <h2>🎨 Appearance</h2>
+        <div class="setting-item">
+          <div class="setting-info">
+            <label>Theme</label>
+            <span class="setting-description">Choose your preferred color scheme</span>
+          </div>
+          <select id="themeSelect">
+            <option value="system">System</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- Notifications -->
+      <section class="settings-section">
+        <h2>🔔 Notifications</h2>
+        <div class="setting-item">
+          <div class="setting-info">
+            <label>Enable Notifications</label>
+            <span class="setting-description">Show notifications for achievements and reminders</span>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" id="notificationsEnabled">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="setting-item">
+          <div class="setting-info">
+            <label>Morning Reminder</label>
+            <span class="setting-description">Get reminded to learn today's word</span>
+          </div>
+          <div class="setting-controls">
+            <label class="toggle">
+              <input type="checkbox" id="morningReminder">
+              <span class="toggle-slider"></span>
+            </label>
+            <input type="time" id="morningTime" value="08:00">
+          </div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-info">
+            <label>Evening Reminder</label>
+            <span class="setting-description">Reminder if you haven't used today's word</span>
+          </div>
+          <div class="setting-controls">
+            <label class="toggle">
+              <input type="checkbox" id="eveningReminder">
+              <span class="toggle-slider"></span>
+            </label>
+            <input type="time" id="eveningTime" value="20:00">
+          </div>
+        </div>
+      </section>
+
+      <!-- Learning Settings -->
+      <section class="settings-section">
+        <h2>📚 Learning</h2>
+        <div class="setting-item">
+          <div class="setting-info">
+            <label>Words Per Day</label>
+            <span class="setting-description">How many words to learn each day</span>
+          </div>
+          <select id="wordsPerDay">
+            <option value="1">1 word</option>
+            <option value="2">2 words</option>
+            <option value="3">3 words</option>
+          </select>
+        </div>
+        <div class="setting-item">
+          <div class="setting-info">
+            <label>Difficulty Preference</label>
+            <span class="setting-description">Filter words by difficulty level</span>
+          </div>
+          <select id="difficultyPreference">
+            <option value="0">All difficulties</option>
+            <option value="1">Easy (★☆☆☆☆)</option>
+            <option value="2">Medium (★★☆☆☆)</option>
+            <option value="3">Intermediate (★★★☆☆)</option>
+            <option value="4">Hard (★★★★☆)</option>
+            <option value="5">Expert (★★★★★)</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- Website Integration -->
+      <section class="settings-section">
+        <h2>🌐 Website Integration</h2>
+        <div class="setting-item">
+          <div class="setting-info">
+            <label>Auto-Detection</label>
+            <span class="setting-description">Detect when you use words naturally on websites</span>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" id="autoDetectionEnabled">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="setting-item">
+          <div class="setting-info">
+            <label>Highlight Words</label>
+            <span class="setting-description">Highlight vocabulary words on web pages</span>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" id="highlightWordsEnabled">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="setting-item">
+          <div class="setting-info">
+            <label>New Tab Override</label>
+            <span class="setting-description">Show Daily Word on new tab page</span>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" id="newTabEnabled">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </section>
+
+      <!-- Data -->
+      <section class="settings-section">
+        <h2>💾 Data</h2>
+        <div class="setting-item">
+          <div class="setting-info">
+            <label>Export Data</label>
+            <span class="setting-description">Download your word history and stats</span>
+          </div>
+          <button class="btn" id="exportBtn">📥 Export</button>
+        </div>
+        <div class="setting-item danger">
+          <div class="setting-info">
+            <label>Reset Progress</label>
+            <span class="setting-description">Clear all data and start fresh</span>
+          </div>
+          <button class="btn btn-danger" id="resetBtn">🗑️ Reset All</button>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section class="settings-section">
+        <h2>ℹ️ About</h2>
+        <div class="about-info">
+          <p><strong>Daily Word</strong> v2.0.0</p>
+          <p>Expand your vocabulary one word at a time.</p>
+          <p class="keyboard-shortcuts">
+            <strong>Keyboard Shortcuts:</strong><br>
+            <code>Alt+W</code> - Open popup<br>
+            <code>Alt+Shift+W</code> - Mark word as used
+          </p>
+        </div>
       </section>
     </main>
-
-    <footer class="footer">
-      <p>Daily Word v1.0.0</p>
-    </footer>
   </div>
 
   <script type="module" src="options.ts"></script>
 </body>
 </html>
-

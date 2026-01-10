@@ -1,12 +1,17 @@
 {
   "manifest_version": 3,
   "name": "Daily Word",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Expand your vocabulary one word at a time. Learn a new rare but delightful English word every day.",
   "permissions": [
     "storage",
     "alarms",
-    "notifications"
+    "notifications",
+    "contextMenus",
+    "tts"
+  ],
+  "host_permissions": [
+    "<all_urls>"
   ],
   "action": {
     "default_popup": "src/popup/popup.html",
@@ -23,6 +28,33 @@
     "service_worker": "service-worker.js",
     "type": "module"
   },
+  "chrome_url_overrides": {
+    "newtab": "src/newtab/newtab.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/content/content.js"],
+      "css": ["src/content/content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Alt+W",
+        "windows": "Alt+W",
+        "mac": "Command+Shift+W"
+      },
+      "description": "Open Daily Word popup"
+    },
+    "mark-used": {
+      "suggested_key": {
+        "default": "Alt+Shift+W"
+      },
+      "description": "Mark today's word as used"
+    }
+  },
   "icons": {
     "16": "icons/icon-16.png",
     "32": "icons/icon-32.png",
@@ -30,4 +62,3 @@
     "128": "icons/icon-128.png"
   }
 }
-

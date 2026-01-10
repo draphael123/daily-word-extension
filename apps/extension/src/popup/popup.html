@@ -7,64 +7,159 @@
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-  <div class="container">
-    <header class="header">
-      <h1 class="title">Daily Word</h1>
-      <div class="streak" id="streak" title="Current streak">
-        <span class="streak-icon">🔥</span>
-        <span class="streak-count" id="streak-count">0</span>
+  <div class="popup-container" id="app">
+    <!-- Header -->
+    <header class="popup-header">
+      <div class="logo">
+        <span class="logo-icon">📚</span>
+        <span class="logo-text">Daily Word</span>
+      </div>
+      <div class="header-actions">
+        <button class="icon-btn" id="themeToggle" title="Toggle theme">
+          <span class="theme-icon">🌙</span>
+        </button>
+        <button class="icon-btn" id="optionsBtn" title="Settings">⚙️</button>
       </div>
     </header>
 
-    <main class="content">
-      <section class="word-section">
-        <div class="word-header">
-          <h2 class="word" id="word">Loading...</h2>
-          <span class="pos" id="pos"></span>
+    <!-- Stats bar -->
+    <div class="stats-bar">
+      <div class="stat">
+        <span class="stat-icon">🔥</span>
+        <span class="stat-value" id="streak">0</span>
+        <span class="stat-label">streak</span>
+      </div>
+      <div class="stat">
+        <span class="stat-icon">⭐</span>
+        <span class="stat-value" id="points">0</span>
+        <span class="stat-label">points</span>
+      </div>
+      <div class="stat">
+        <span class="stat-icon">📖</span>
+        <span class="stat-value" id="wordsLearned">0</span>
+        <span class="stat-label">learned</span>
+      </div>
+    </div>
+
+    <!-- Word card -->
+    <main class="word-card">
+      <div class="word-header">
+        <h1 class="word" id="word">Loading...</h1>
+        <div class="word-actions">
+          <button class="word-action-btn" id="favoriteBtn" title="Add to favorites">
+            <span id="favoriteIcon">🤍</span>
+          </button>
+          <button class="word-action-btn" id="pronounceBtn" title="Pronounce">🔊</button>
+          <button class="word-action-btn" id="shareBtn" title="Share">📤</button>
         </div>
-        <p class="definition" id="definition"></p>
-      </section>
+      </div>
+      
+      <div class="word-meta">
+        <span class="pos" id="pos"></span>
+        <span class="category" id="category"></span>
+        <span class="difficulty" id="difficulty"></span>
+      </div>
 
-      <section class="examples-section">
-        <h3 class="section-title">Examples</h3>
-        <ul class="examples-list" id="examples">
-          <li class="example" id="example-1"></li>
-          <li class="example" id="example-2"></li>
-        </ul>
-      </section>
+      <p class="definition" id="definition"></p>
 
-      <section class="practice-section" id="practice-section">
-        <h3 class="section-title">Use it in a sentence</h3>
-        <textarea 
-          class="sentence-input" 
-          id="sentence-input" 
-          placeholder="Write your own sentence using the word..."
-          rows="3"
-        ></textarea>
-        <div class="validation-message" id="validation-message"></div>
-        <button 
-          class="mark-button" 
-          id="mark-button" 
-          disabled
-        >
-          Mark as used
-        </button>
-      </section>
+      <div class="etymology" id="etymology"></div>
 
-      <section class="used-section" id="used-section" style="display: none;">
-        <div class="used-badge">
-          <span class="used-icon">✅</span>
-          <span class="used-text">Used today</span>
-        </div>
-      </section>
+      <div class="examples">
+        <h3>Examples</h3>
+        <ul id="examplesList"></ul>
+      </div>
+
+      <div class="related" id="relatedSection" style="display: none;">
+        <h3>Related</h3>
+        <div class="related-words" id="relatedWords"></div>
+      </div>
     </main>
 
-    <footer class="footer">
-      <a href="#" id="options-link" class="options-link">Options</a>
+    <!-- Action section -->
+    <section class="action-section">
+      <div class="sentence-input" id="sentenceSection">
+        <label for="sentence">Use it in a sentence:</label>
+        <textarea 
+          id="sentence" 
+          placeholder="Type a sentence using the word..."
+          rows="2"
+        ></textarea>
+        <div class="sentence-actions">
+          <span class="validation-status" id="validationStatus"></span>
+          <button class="mark-used-btn" id="markUsedBtn" disabled>
+            ✓ Mark as Used
+          </button>
+        </div>
+      </div>
+
+      <div class="used-badge" id="usedBadge" style="display: none;">
+        <span class="used-icon">✅</span>
+        <span class="used-text">Used today!</span>
+        <span class="used-points" id="usedPoints">+10 pts</span>
+      </div>
+    </section>
+
+    <!-- Notes section -->
+    <section class="notes-section">
+      <label for="notes">Personal notes:</label>
+      <textarea 
+        id="notes" 
+        placeholder="Add your own notes, mnemonics, or thoughts..."
+        rows="2"
+      ></textarea>
+      <button class="save-notes-btn" id="saveNotesBtn">Save Notes</button>
+    </section>
+
+    <!-- Quick links -->
+    <footer class="popup-footer">
+      <button class="footer-link" id="historyBtn">📖 History</button>
+      <button class="footer-link" id="achievementsBtn">🏆 <span id="achievementCount">0</span></button>
+      <button class="footer-link" id="challengeBtn">🎯 Weekly</button>
     </footer>
+
+    <!-- Weekly challenge modal -->
+    <div class="modal" id="challengeModal" style="display: none;">
+      <div class="modal-content">
+        <button class="modal-close" id="closeChallengeModal">×</button>
+        <h2>🎯 Weekly Challenge</h2>
+        <div class="challenge-progress">
+          <div class="progress-bar">
+            <div class="progress-fill" id="challengeFill"></div>
+          </div>
+          <p class="challenge-text" id="challengeText">0 / 5 words used</p>
+        </div>
+        <p class="challenge-reward">Complete for +50 points!</p>
+      </div>
+    </div>
+
+    <!-- Achievements modal -->
+    <div class="modal" id="achievementsModal" style="display: none;">
+      <div class="modal-content modal-large">
+        <button class="modal-close" id="closeAchievementsModal">×</button>
+        <h2>🏆 Achievements</h2>
+        <div class="achievements-grid" id="achievementsGrid"></div>
+      </div>
+    </div>
+
+    <!-- History modal -->
+    <div class="modal" id="historyModal" style="display: none;">
+      <div class="modal-content modal-large">
+        <button class="modal-close" id="closeHistoryModal">×</button>
+        <h2>📖 Word History</h2>
+        <div class="history-filters">
+          <input type="text" id="historySearch" placeholder="Search words...">
+          <select id="historyFilter">
+            <option value="all">All</option>
+            <option value="used">Used</option>
+            <option value="favorites">Favorites</option>
+          </select>
+        </div>
+        <div class="history-list" id="historyList"></div>
+        <button class="export-btn" id="exportBtn">📥 Export Data</button>
+      </div>
+    </div>
   </div>
 
   <script type="module" src="popup.ts"></script>
 </body>
 </html>
-

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Word</title>
+  <link rel="stylesheet" href="newtab.css">
+</head>
+<body>
+  <div class="newtab-container" id="app">
+    <!-- Background decoration -->
+    <div class="background-decoration">
+      <div class="bg-circle bg-circle-1"></div>
+      <div class="bg-circle bg-circle-2"></div>
+      <div class="bg-circle bg-circle-3"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="newtab-header">
+      <div class="logo">
+        <span class="logo-icon">📚</span>
+        <span class="logo-text">Daily Word</span>
+      </div>
+      <div class="header-stats">
+        <div class="stat">
+          <span class="stat-icon">🔥</span>
+          <span class="stat-value" id="streak">0</span>
+          <span class="stat-label">day streak</span>
+        </div>
+        <div class="stat">
+          <span class="stat-icon">⭐</span>
+          <span class="stat-value" id="points">0</span>
+          <span class="stat-label">points</span>
+        </div>
+      </div>
+      <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+        <span class="theme-icon">🌙</span>
+      </button>
+    </header>
+
+    <!-- Main content -->
+    <main class="newtab-main">
+      <!-- Word card -->
+      <article class="word-card" id="wordCard">
+        <div class="word-header">
+          <h1 class="word" id="word">Loading...</h1>
+          <span class="pos" id="pos"></span>
+          <button class="pronounce-btn" id="pronounceBtn" title="Pronounce">
+            🔊
+          </button>
+        </div>
+
+        <p class="definition" id="definition"></p>
+
+        <div class="etymology" id="etymology"></div>
+
+        <div class="examples" id="examples">
+          <h3>Examples</h3>
+          <ul id="examplesList"></ul>
+        </div>
+
+        <div class="related" id="relatedSection">
+          <h3>Related Words</h3>
+          <div class="related-words" id="relatedWords"></div>
+        </div>
+
+        <div class="word-meta">
+          <span class="category" id="category"></span>
+          <span class="difficulty" id="difficulty"></span>
+        </div>
+      </article>
+
+      <!-- Action section -->
+      <section class="action-section">
+        <div class="sentence-input" id="sentenceSection">
+          <label for="sentence">Use it in a sentence:</label>
+          <textarea 
+            id="sentence" 
+            placeholder="Type a sentence using today's word..."
+            rows="3"
+          ></textarea>
+          <div class="sentence-actions">
+            <span class="validation-status" id="validationStatus"></span>
+            <button class="mark-used-btn" id="markUsedBtn" disabled>
+              Mark as Used
+            </button>
+          </div>
+        </div>
+
+        <div class="used-badge" id="usedBadge" style="display: none;">
+          <span class="used-icon">✅</span>
+          <span class="used-text">Used today! +10 points</span>
+        </div>
+      </section>
+
+      <!-- Quick stats -->
+      <section class="quick-stats">
+        <div class="quick-stat" id="weeklyProgress">
+          <h4>Weekly Challenge</h4>
+          <div class="progress-bar">
+            <div class="progress-fill" id="weeklyFill"></div>
+          </div>
+          <span class="progress-text" id="weeklyText">0 / 5 words</span>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="newtab-footer">
+      <a href="#" id="historyLink">📖 Word History</a>
+      <a href="#" id="achievementsLink">🏆 Achievements</a>
+      <a href="#" id="optionsLink">⚙️ Settings</a>
+    </footer>
+  </div>
+
+  <script type="module" src="newtab.ts"></script>
+</body>
+</html>
+

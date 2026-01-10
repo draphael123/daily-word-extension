@@ -19,3 +19,6 @@ export function validateWordInSentence(sentence: string, word: string): boolean 
   return regex.test(sentence);
 }
 
+// Alias for backwards compatibility
+export const validateSentence = validateWordInSentence;
+
