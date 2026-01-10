@@ -57,7 +57,11 @@ export default function SampleWords() {
         entries.forEach((entry) => {
           const index = parseInt(entry.target.getAttribute('data-index') || '0');
           if (entry.isIntersecting) {
-            setVisibleCards((prev) => new Set([...prev, index]));
+            setVisibleCards((prev) => {
+              const newSet = new Set(prev);
+              newSet.add(index);
+              return newSet;
+            });
           }
         });
       },
