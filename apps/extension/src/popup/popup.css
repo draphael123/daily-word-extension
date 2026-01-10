@@ -1,0 +1,256 @@
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #1a1a2e;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  min-width: 360px;
+  max-width: 400px;
+}
+
+.container {
+  padding: 20px;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #0d9488;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0d9488;
+  letter-spacing: -0.5px;
+}
+
+.streak {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.streak-icon {
+  font-size: 14px;
+}
+
+.streak-count {
+  color: #b45309;
+}
+
+/* Word section */
+.word-section {
+  margin-bottom: 20px;
+}
+
+.word-header {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.word {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -1px;
+}
+
+.pos {
+  font-size: 13px;
+  font-style: italic;
+  color: #64748b;
+  padding: 2px 8px;
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+.definition {
+  font-size: 15px;
+  color: #334155;
+  line-height: 1.6;
+}
+
+/* Section titles */
+.section-title {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #94a3b8;
+  margin-bottom: 10px;
+}
+
+/* Examples section */
+.examples-section {
+  margin-bottom: 24px;
+  padding: 16px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.examples-list {
+  list-style: none;
+}
+
+.example {
+  font-size: 13px;
+  color: #475569;
+  padding: 8px 0;
+  padding-left: 16px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.example::before {
+  content: '"';
+  position: absolute;
+  left: 0;
+  font-size: 20px;
+  color: #0d9488;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.example + .example {
+  border-top: 1px solid #f1f5f9;
+}
+
+/* Practice section */
+.practice-section {
+  padding: 16px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.sentence-input {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  font-family: inherit;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  resize: vertical;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background: #fafafa;
+}
+
+.sentence-input:focus {
+  outline: none;
+  border-color: #0d9488;
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
+  background: #ffffff;
+}
+
+.sentence-input::placeholder {
+  color: #94a3b8;
+}
+
+.validation-message {
+  min-height: 20px;
+  margin: 8px 0;
+  font-size: 12px;
+  transition: color 0.2s;
+}
+
+.validation-message.valid {
+  color: #059669;
+}
+
+.validation-message.invalid {
+  color: #dc2626;
+}
+
+.mark-button {
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  color: #ffffff;
+  background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+}
+
+.mark-button:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.mark-button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.mark-button:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+}
+
+/* Used section */
+.used-section {
+  padding: 20px;
+  text-align: center;
+}
+
+.used-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  border-radius: 30px;
+  font-weight: 600;
+  color: #065f46;
+}
+
+.used-icon {
+  font-size: 18px;
+}
+
+.used-text {
+  font-size: 15px;
+}
+
+/* Footer */
+.footer {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #e2e8f0;
+  text-align: center;
+}
+
+.options-link {
+  font-size: 12px;
+  color: #64748b;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.options-link:hover {
+  color: #0d9488;
+  text-decoration: underline;
+}
+

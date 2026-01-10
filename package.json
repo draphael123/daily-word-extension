@@ -1,0 +1,30 @@
+{
+  "name": "daily-word-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Daily Word - Chrome Extension and Landing Page Monorepo",
+  "scripts": {
+    "dev": "pnpm --filter @daily-word/web dev",
+    "dev:extension": "pnpm --filter @daily-word/extension dev",
+    "build": "pnpm --filter @daily-word/extension build && pnpm --filter @daily-word/web build",
+    "build:extension": "pnpm --filter @daily-word/extension build",
+    "build:web": "pnpm --filter @daily-word/web build",
+    "zip:extension": "pnpm --filter @daily-word/extension zip",
+    "clean": "pnpm -r exec rm -rf node_modules dist .next out",
+    "typecheck": "pnpm -r typecheck"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@8.15.0",
+  "keywords": [
+    "chrome-extension",
+    "vocabulary",
+    "daily-word",
+    "monorepo"
+  ],
+  "author": "",
+  "license": "MIT"
+}
+

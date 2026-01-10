@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Word</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 class="title">Daily Word</h1>
+      <div class="streak" id="streak" title="Current streak">
+        <span class="streak-icon">🔥</span>
+        <span class="streak-count" id="streak-count">0</span>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="word-section">
+        <div class="word-header">
+          <h2 class="word" id="word">Loading...</h2>
+          <span class="pos" id="pos"></span>
+        </div>
+        <p class="definition" id="definition"></p>
+      </section>
+
+      <section class="examples-section">
+        <h3 class="section-title">Examples</h3>
+        <ul class="examples-list" id="examples">
+          <li class="example" id="example-1"></li>
+          <li class="example" id="example-2"></li>
+        </ul>
+      </section>
+
+      <section class="practice-section" id="practice-section">
+        <h3 class="section-title">Use it in a sentence</h3>
+        <textarea 
+          class="sentence-input" 
+          id="sentence-input" 
+          placeholder="Write your own sentence using the word..."
+          rows="3"
+        ></textarea>
+        <div class="validation-message" id="validation-message"></div>
+        <button 
+          class="mark-button" 
+          id="mark-button" 
+          disabled
+        >
+          Mark as used
+        </button>
+      </section>
+
+      <section class="used-section" id="used-section" style="display: none;">
+        <div class="used-badge">
+          <span class="used-icon">✅</span>
+          <span class="used-text">Used today</span>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <a href="#" id="options-link" class="options-link">Options</a>
+    </footer>
+  </div>
+
+  <script type="module" src="popup.ts"></script>
+</body>
+</html>
+

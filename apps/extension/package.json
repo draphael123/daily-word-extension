@@ -1,0 +1,23 @@
+{
+  "name": "@daily-word/extension",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite build --watch --mode development",
+    "build": "vite build",
+    "zip": "node scripts/zip.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@daily-word/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.260",
+    "archiver": "^6.0.1",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.12",
+    "vite-plugin-static-copy": "^1.0.1"
+  }
+}
+
