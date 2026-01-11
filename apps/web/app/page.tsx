@@ -6,12 +6,22 @@ import SampleWords from './components/SampleWords';
 import StreakVisualization from './components/StreakVisualization';
 import ThemeToggle from './components/ThemeToggle';
 import ScrollAnimator from './components/ScrollAnimator';
+import V2Banner from './components/V2Banner';
+import AchievementGallery from './components/AchievementGallery';
+import NewTabPreview from './components/NewTabPreview';
+import VersionComparison from './components/VersionComparison';
+import PermissionsExplained from './components/PermissionsExplained';
+import Changelog from './components/Changelog';
+import KeyboardShortcuts from './components/KeyboardShortcuts';
 
 export default function Home() {
   return (
     <main className="relative overflow-hidden">
+      {/* V2 Banner */}
+      <V2Banner />
+
       {/* Fixed Theme Toggle */}
-      <div className="fixed top-4 right-4 z-50">
+      <div className="fixed top-16 right-4 z-50">
         <ThemeToggle />
       </div>
 
@@ -29,7 +39,7 @@ export default function Home() {
             <div className="text-center lg:text-left">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-50 dark:bg-primary-900/50 border border-primary-100 dark:border-primary-800 rounded-full text-primary-700 dark:text-primary-300 text-sm font-medium mb-6 animate-fade-in">
                 <span className="w-2 h-2 bg-primary-500 rounded-full animate-pulse" />
-                Free Chrome Extension
+                Free Chrome Extension — v2.0 Now Available!
               </div>
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold tracking-tight text-gray-900 dark:text-white animate-slide-up">
@@ -40,8 +50,7 @@ export default function Home() {
 
               <p className="mt-6 text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-xl mx-auto lg:mx-0 animate-slide-up animate-delay-100">
                 Discover a new rare but delightful English word every day.
-                Practice using it in your own sentences and track your growing
-                vocabulary.
+                Track your streak, earn achievements, and watch your vocabulary grow.
               </p>
 
               <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-slide-up animate-delay-200">
@@ -59,10 +68,10 @@ export default function Home() {
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                   </svg>
-                  Download Extension
+                  Download v2.0
                 </a>
-                <a href="#try-it" className="btn-secondary">
-                  Try It First
+                <a href="#whats-new" className="btn-secondary">
+                  See What&apos;s New
                 </a>
               </div>
 
@@ -85,6 +94,65 @@ export default function Home() {
           <svg className="w-6 h-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
+        </div>
+      </section>
+
+      {/* What's New in v2.0 Section */}
+      <section id="whats-new" className="py-24 bg-gradient-to-b from-primary-50 to-white dark:from-primary-950 dark:to-gray-950">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollAnimator className="text-center mb-16">
+            <span className="inline-flex items-center gap-2 bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300 px-4 py-2 rounded-full text-sm font-bold mb-4">
+              🎉 NEW RELEASE
+            </span>
+            <h2 className="section-title">
+              What&apos;s New in <span className="gradient-text">Version 2.0</span>
+            </h2>
+            <p className="section-subtitle">
+              A massive update with 20+ new features to supercharge your vocabulary learning.
+            </p>
+          </ScrollAnimator>
+
+          <ScrollAnimator delay={100}>
+            <VersionComparison />
+          </ScrollAnimator>
+        </div>
+      </section>
+
+      {/* New Tab Preview Section */}
+      <section className="py-24 bg-white dark:bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollAnimator className="text-center mb-16">
+            <h2 className="section-title">
+              Your New Tab, <span className="gradient-text">Transformed</span>
+            </h2>
+            <p className="section-subtitle">
+              Every new tab becomes a learning opportunity. See today&apos;s word, track your streak, 
+              and use the word right from your new tab page.
+            </p>
+          </ScrollAnimator>
+
+          <ScrollAnimator delay={100}>
+            <NewTabPreview />
+          </ScrollAnimator>
+        </div>
+      </section>
+
+      {/* Achievements Section */}
+      <section className="py-24 bg-gray-50 dark:bg-gray-950">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollAnimator className="text-center mb-16">
+            <h2 className="section-title">
+              Unlock <span className="gradient-text">25 Achievements</span>
+            </h2>
+            <p className="section-subtitle">
+              Earn badges for streaks, words used, points earned, and special accomplishments.
+              Can you collect them all?
+            </p>
+          </ScrollAnimator>
+
+          <ScrollAnimator delay={100}>
+            <AchievementGallery />
+          </ScrollAnimator>
         </div>
       </section>
 
@@ -118,72 +186,101 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Features Section - Updated for v2.0 */}
       <section id="features" className="py-24 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimator className="text-center mb-16">
             <h2 className="section-title">
-              Everything You Need to{' '}
-              <span className="gradient-text">Build Your Vocabulary</span>
+              Packed with <span className="gradient-text">Powerful Features</span>
             </h2>
             <p className="section-subtitle">
-              Simple, focused, and designed to help you actually remember and
-              use new words.
+              Everything you need to build a remarkable vocabulary, and then some.
             </p>
           </ScrollAnimator>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Feature cards with scroll animations */}
             {[
               {
-                icon: (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                ),
+                icon: '🔍',
+                title: 'Auto-Detection',
+                description: 'Automatically detects when you naturally use vocabulary words while typing on any website.',
+                isNew: true,
+              },
+              {
+                icon: '🌐',
+                title: 'Word Highlighting',
+                description: 'Vocabulary words are highlighted on web pages. Click to see the definition instantly.',
+                isNew: true,
+              },
+              {
+                icon: '🔊',
+                title: 'Pronunciation',
+                description: 'Click the speaker button to hear any word pronounced correctly using text-to-speech.',
+                isNew: true,
+              },
+              {
+                icon: '🏆',
+                title: '25 Achievements',
+                description: 'Unlock badges for streaks, words used, points earned, and special accomplishments.',
+                isNew: true,
+              },
+              {
+                icon: '⭐',
+                title: 'Points & Challenges',
+                description: 'Earn points for using words with streak bonuses. Complete weekly challenges for extra rewards.',
+                isNew: true,
+              },
+              {
+                icon: '🌙',
+                title: 'Dark Mode',
+                description: 'Beautiful dark theme across all pages. Automatically matches your system preference.',
+                isNew: true,
+              },
+              {
+                icon: '📚',
                 title: '1000+ Curated Words',
                 description: 'Hand-picked rare but pleasant English words with thoughtful definitions and example sentences.',
               },
               {
-                icon: (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                ),
+                icon: '📅',
                 title: 'Daily Rotation',
                 description: 'A new word every day at midnight in your timezone. Words never repeat until you\'ve seen them all.',
               },
               {
-                icon: (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                ),
-                title: 'Practice Writing',
-                description: 'Write your own sentence using the word. The extension validates that you used it correctly.',
-              },
-              {
-                icon: (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
-                ),
+                icon: '🔥',
                 title: 'Streak Tracking',
-                description: 'Build your streak by using the word each day. Stay motivated with visual progress tracking.',
+                description: 'Build your streak by using the word each day. Visualize your progress on a calendar heatmap.',
               },
               {
-                icon: (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-                ),
-                title: 'Smart Notifications',
-                description: 'Get a satisfying notification when you mark a word as used. Optional and fully configurable.',
+                icon: '📖',
+                title: 'Word History',
+                description: 'Browse, search, and filter all past words. Add favorites and personal notes.',
+                isNew: true,
               },
               {
-                icon: (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                ),
-                title: '100% Private',
-                description: 'All data stays on your device. No accounts, no tracking, no data collection.',
+                icon: '⌨️',
+                title: 'Keyboard Shortcuts',
+                description: 'Quick access with Alt+W. Power users can navigate without touching the mouse.',
+                isNew: true,
+              },
+              {
+                icon: '☁️',
+                title: 'Cross-Device Sync',
+                description: 'Your progress syncs across all Chrome browsers where you\'re signed in.',
+                isNew: true,
               },
             ].map((feature, idx) => (
-              <ScrollAnimator key={idx} delay={idx * 100} animation="fade-up">
-                <div className="card group hover:border-primary-200 dark:hover:border-primary-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                  <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/50 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary-200 dark:group-hover:bg-primary-800/50 transition-colors group-hover:scale-110 duration-300">
-                    <svg className="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <ScrollAnimator key={idx} delay={idx * 50} animation="fade-up">
+                <div className="card group hover:border-primary-200 dark:hover:border-primary-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 h-full">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/50 rounded-xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300">
                       {feature.icon}
-                    </svg>
+                    </div>
+                    {feature.isNew && (
+                      <span className="bg-primary-500 text-white text-xs font-bold px-2 py-0.5 rounded">
+                        NEW
+                      </span>
+                    )}
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                     {feature.title}
@@ -198,8 +295,26 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Sample Words Section */}
+      {/* Keyboard Shortcuts Section */}
       <section className="py-24 bg-gray-50 dark:bg-gray-950">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollAnimator className="text-center mb-12">
+            <h2 className="section-title">
+              <span className="gradient-text">Keyboard</span> Shortcuts
+            </h2>
+            <p className="section-subtitle">
+              Power users rejoice! Navigate Daily Word without touching your mouse.
+            </p>
+          </ScrollAnimator>
+
+          <ScrollAnimator delay={100}>
+            <KeyboardShortcuts />
+          </ScrollAnimator>
+        </div>
+      </section>
+
+      {/* Sample Words Section */}
+      <section className="py-24 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimator className="text-center mb-16">
             <h2 className="section-title">
@@ -215,14 +330,14 @@ export default function Home() {
       </section>
 
       {/* Streak Visualization Section */}
-      <section className="py-24 bg-white dark:bg-gray-900">
+      <section className="py-24 bg-gray-50 dark:bg-gray-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimator className="text-center mb-12">
             <h2 className="section-title">
               Watch Your <span className="gradient-text">Progress Grow</span>
             </h2>
             <p className="section-subtitle">
-              Track your learning streak and see your vocabulary expand over time.
+              Track your learning streak with a beautiful calendar heatmap in the settings page.
             </p>
           </ScrollAnimator>
 
@@ -233,7 +348,7 @@ export default function Home() {
       </section>
 
       {/* Install Section */}
-      <section id="install" className="py-24 bg-gray-50 dark:bg-gray-950 bg-dots-pattern">
+      <section id="install" className="py-24 bg-white dark:bg-gray-900 bg-dots-pattern">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimator className="text-center mb-16">
             <h2 className="section-title">
@@ -283,10 +398,10 @@ export default function Home() {
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                 </svg>
-                Download ZIP (50 KB)
+                Download v2.0 (122 KB)
               </a>
               <p className="text-xs text-gray-400 dark:text-gray-500 mt-4">
-                Version 1.0.0 • Works on Chrome, Edge, Brave, and other Chromium browsers
+                Version 2.0.0 • Works on Chrome, Edge, Brave, and other Chromium browsers
               </p>
             </div>
           </ScrollAnimator>
@@ -375,6 +490,24 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Permissions Section */}
+      <section className="py-24 bg-gray-50 dark:bg-gray-950">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollAnimator className="text-center mb-16">
+            <h2 className="section-title">
+              <span className="gradient-text">Permissions</span> Explained
+            </h2>
+            <p className="section-subtitle">
+              We believe in transparency. Here&apos;s exactly what each permission does and why we need it.
+            </p>
+          </ScrollAnimator>
+
+          <ScrollAnimator delay={100}>
+            <PermissionsExplained />
+          </ScrollAnimator>
+        </div>
+      </section>
+
       {/* Privacy Section */}
       <section className="py-24 bg-white dark:bg-gray-900">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -386,15 +519,14 @@ export default function Home() {
             </div>
             <h2 className="section-title mb-4">Your Privacy is Sacred</h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-8">
-              Daily Word is designed with privacy as a core principle. We
-              don&apos;t collect any data, period.
+              Daily Word is designed with privacy as a core principle. Everything stays on your device.
             </p>
           </ScrollAnimator>
 
           <div className="grid sm:grid-cols-3 gap-6">
             {[
               { emoji: '🔒', title: 'No Tracking', desc: 'No analytics, no cookies, no fingerprinting' },
-              { emoji: '💾', title: 'Local Storage Only', desc: 'All progress stays on your device' },
+              { emoji: '💾', title: 'Local + Sync', desc: 'Data stays on device, syncs via your Chrome account only' },
               { emoji: '🚫', title: 'No Account Required', desc: 'No email, no registration, no login' },
             ].map((item, idx) => (
               <ScrollAnimator key={idx} delay={idx * 100} animation="scale">
@@ -409,8 +541,26 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FAQ Section */}
+      {/* Changelog Section */}
       <section className="py-24 bg-gray-50 dark:bg-gray-950">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollAnimator className="text-center mb-16">
+            <h2 className="section-title">
+              <span className="gradient-text">Changelog</span>
+            </h2>
+            <p className="section-subtitle">
+              See everything that&apos;s been added and improved.
+            </p>
+          </ScrollAnimator>
+
+          <ScrollAnimator delay={100}>
+            <Changelog />
+          </ScrollAnimator>
+        </div>
+      </section>
+
+      {/* FAQ Section - Updated with new questions */}
+      <section className="py-24 bg-white dark:bg-gray-900">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimator className="text-center mb-16">
             <h2 className="section-title">
@@ -421,6 +571,18 @@ export default function Home() {
           <div className="space-y-4">
             {[
               {
+                q: 'How does auto-detection work?',
+                a: 'When you type in any text field on any website, the extension checks if you\'ve used one of your Daily Word vocabulary words. If detected, you earn 15 points and see a notification. Your typing is NOT stored or sent anywhere - it\'s only compared against the word list locally.',
+              },
+              {
+                q: 'Is my typing data sent anywhere?',
+                a: 'Absolutely not. All detection happens 100% locally in your browser. We never send your typing, browsing history, or any personal data to any server. The extension is open source - you can verify this yourself.',
+              },
+              {
+                q: 'How do I disable the new tab override?',
+                a: 'Go to the extension\'s Options page (click the gear icon in the popup), scroll to "Website Integration", and toggle off "New Tab Override". Your regular new tab page will return immediately.',
+              },
+              {
                 q: 'How does the daily word rotation work?',
                 a: 'At midnight in your local timezone, the extension automatically advances to the next word in your personalized shuffled list. Each user gets a unique order, and words never repeat until you\'ve seen all 1000+.',
               },
@@ -429,16 +591,20 @@ export default function Home() {
                 a: 'When you\'ve cycled through all words, the list automatically reshuffles and starts again. You can also manually reset and reshuffle from the Options page anytime.',
               },
               {
+                q: 'How are points calculated?',
+                a: 'You earn 10 points for marking a word as used, plus a streak bonus (up to 5 points × your streak days, max 150 bonus). Auto-detection gives 15 points. Weekly challenges give 50 points. Each achievement unlocked gives 25 points.',
+              },
+              {
+                q: 'Does my progress sync across devices?',
+                a: 'Yes! If you\'re signed into Chrome, your progress (streak, points, history, achievements) syncs automatically via chrome.storage.sync. You\'ll pick up right where you left off on any device.',
+              },
+              {
                 q: 'Is the extension really free?',
                 a: 'Yes, 100% free with no hidden costs, premium features, or ads. This is a passion project to help people discover the beauty of the English language.',
               },
               {
                 q: 'Can I use this on Firefox or other browsers?',
                 a: 'Currently, Daily Word is only available for Chrome and Chromium-based browsers (Edge, Brave, etc.). Firefox support may come in a future update.',
-              },
-              {
-                q: 'How is my streak calculated?',
-                a: 'Your streak increases by 1 each consecutive day you mark the word as used. If you miss a day, your streak resets to 0 (or 1 if you use the word that day).',
               },
             ].map((faq, idx) => (
               <ScrollAnimator key={idx} delay={idx * 50}>
@@ -466,6 +632,7 @@ export default function Home() {
                 W
               </div>
               <span className="font-semibold text-white">Daily Word</span>
+              <span className="text-xs bg-primary-600 text-white px-2 py-0.5 rounded ml-2">v2.0</span>
             </div>
 
             <div className="flex gap-6 text-sm">
@@ -474,6 +641,9 @@ export default function Home() {
               </a>
               <a href="#install" className="hover:text-white transition-colors">
                 Install
+              </a>
+              <a href="#whats-new" className="hover:text-white transition-colors">
+                What&apos;s New
               </a>
               <a
                 href="https://github.com/draphael123/daily-word-extension"
